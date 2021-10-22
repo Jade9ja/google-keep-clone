@@ -1,3 +1,7 @@
+# Google-Keep-Clone
+
+An attempt to make a Google Keep clone using React.js
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
