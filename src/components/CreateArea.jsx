@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
 function CreateArea(props) {
+  const [isActive, setActive] = useState(false);
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
 
+  function activityChange() {
+    setActive(true);
+  }
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -24,25 +28,28 @@ function CreateArea(props) {
       content: ""
     });
     event.preventDefault();
+    setActive(false);
   }
 
   return (
     <div>
       <form>
+        { isActive && 
         <input
           name="title"
           onChange={handleChange}
           value={note.title}
           placeholder="Title"
-        />
+        /> }
         <textarea
           name="content"
+          onClick={activityChange}
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows="3"
+          rows={isActive ? 3 : 1}
         />
-        <button onClick={submitNote}>Add</button>
+        {isActive && <button onClick={submitNote}>+</button>}
       </form>
     </div>
   );
